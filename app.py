@@ -9,10 +9,11 @@ signal.signal(signal.SIGINT, lambda s, f: os._exit(0))
 
 @app.route("/")
 def generate_buzz():
-	page = '<html><body><h1 style="color:white;background-color:black;">'
-    page += generator.generate_buzz()
-    page += '</h1></body></html>'
-    return page
+	page = '<html><body'
+	page += '><h1>'
+	page += generator.generate_buzz()
+	page += '</h1></body></html>'
+	return page
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=int(os.getenv('PORT', 5000)))
