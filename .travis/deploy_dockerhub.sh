@@ -1,5 +1,5 @@
 #!/bin/sh
-docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+docker login docker.io -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
 if [ "$TRAVIS_BRANCH" = "master" ]; then
     TAG="latest"
 else
@@ -7,5 +7,4 @@ else
 fi
 DOCKER_PATH=$DOCKER_USER/$DOCKERHUB_REPO:$TAG
 docker build -f Dockerfile -t $DOCKER_PATH .
-docker tag $TAG $DOCKERHUB_REPO/$TAG
 docker push $DOCKER_PATH
